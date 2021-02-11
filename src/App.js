@@ -1,16 +1,14 @@
 import React from 'react';
+import Editable from './AdminHome/Editable';
 import './App.css';
-// import Home from './Routers/home'
-// import Index from './Home/index'
-//import Index from './Home/index'
-import Index from './UserHome/index'
+import Index from './Home/index';
+// import Index from './Home/index';
 
 function App() {
   return (
       <div>
-        <Index />
-        
+        {/* <Index /> */}
+        <Editable />
       </div>
   );
-}
-export default App
+  }export default App;

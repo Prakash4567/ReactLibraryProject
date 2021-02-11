@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import HeaderOption from "./HeaderOption";
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
-import HomeIcon from "@material-ui/icons/Home";
+import { Link } from 'react-router-dom';
 import ContactsIcon from '@material-ui/icons/Contacts';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
  
 function Header() {
+  const [search, setSearch] = useState("");
+  const searchOnChange = (event) => setSearch(event.target.value);
+  const searchSubmit = () => console.log("searching for "+search);
   return (
     <div className="header">
       <div className="header_left" >
@@ -19,17 +22,22 @@ function Header() {
       BOOKS WORLD
      </h1> 
       
-        <div className="header__search">
+     <div className="header__search" >
           <SearchIcon />
-          <input type="text" />
-        </div>
+            
+            <input  type="text" placeholder="Search books" 
+              value={search} onChange = {searchOnChange}
+              onSubmit={searchSubmit}
+              />
+          </div>
       </div>
  
       <div className="header__right">
-        <HeaderOption Icon={ContactsIcon} title="Contact Us" />
-        <HeaderOption Icon={LoyaltyIcon} title="Membership" />
-        <HeaderOption Icon={AccountBalanceIcon} title="Donate" />
-        <HeaderOption Icon={PermIdentityIcon} title="Profile" />
+      <Link to="/Contactus"> <HeaderOption Icon={ContactsIcon} title="Contact Us" /></Link>
+       
+       <Link to ="/Membership"> <HeaderOption Icon={LoyaltyIcon} title="Membership" /></Link>
+      <Link to="/Donate"><HeaderOption Icon={AccountBalanceIcon} title="Donate" /></Link>   
+      <Link to="/signin"> <HeaderOption Icon={PermIdentityIcon} title="Signin" /></Link>
 
       </div>
     </div>
